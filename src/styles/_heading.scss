@@ -3,4 +3,26 @@ body {
   h1 {
     color: grey;
   }
+  button {
+    outline: none;
+    border-radius: 2.5vw 0;
+    padding: 1vw;
+    &:hover {
+      cursor: pointer;
+      background: white;
+      color: red;
+    }
+  }
+  li {
+    list-style-type: none;
+    padding: 1vw 2vw;
+    border: 0.1vw solid lime;
+    border-radius: 0 4vw;
+    background: rgba(70,50,30,0.4);
+    color: lime;
+    &:hover {
+      background: rgba(80,60,40,0.8);
+      box-shadow: 1vw 2vw 5vw 0.1vw green;
+    }
+  }
 }
