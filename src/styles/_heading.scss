@@ -1,5 +1,5 @@
 body {
-  background: silver;
+  background: lime;
   h1 {
     color: grey;
   }
@@ -7,11 +7,19 @@ body {
     outline: none;
     border-radius: 2.5vw 0;
     padding: 1vw;
+
     &:hover {
       cursor: pointer;
       background: white;
       color: red;
     }
+  }
+  .wrapper {
+    background-image: url(../images/lights.jpg);
+    width: 80%;
+    height: 20vw;
+    border-radius: 2.5vw 0;
+    box-shadow: 1vw 2vw 5vw 0.1vw green;
   }
   li {
     list-style-type: none;
@@ -22,6 +30,7 @@ body {
     color: lime;
     &:hover {
       background: rgba(80,60,40,0.8);
+      background-size: 100% 50%;
       box-shadow: 1vw 2vw 5vw 0.1vw green;
     }
   }
