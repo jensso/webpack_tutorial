@@ -5,6 +5,9 @@ import '../styles/main.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import {InfoBox} from './infobox.js';
+import {NavBar} from './navbar.js';
+import {BlogPostData,BlogPostContent,BlogPost} from './blog';
 
 // button.addEventListener('click', ev=> {
 //   addElement(list,'LI', 'a task is born');
@@ -63,34 +66,38 @@ import PropTypes from 'prop-types';
 // };
 // ReactDOM.render(<Player firstName='Cristiano' lastName='Ronaldo' caps={50} goals={70} />, document.getElementById('app4'));
 // ReactDOM.render(<Player firstName='Lionel' lastName='Messi' caps={180} goals={270} />, document.getElementById('app5'));
+// class App extends React.Component {
+//   render() {
+//     return (
+//       <React.Fragment>
+//       <NavBar />
+//       <InfoBox title='Ich bin...' pic='Batman' description='The Dark Knight'/>
+//       <InfoBox title='Und ich bin..' pic='Superman' description='The man of Steel'/>
+//       <InfoBox title='Und mich nennt man..' pic='marvels-spider-man' description='The human Spider'/>
+//       <InfoBox title='Ich bin..' pic='alps' description='The Water Guy'/>
+//       </React.Fragment>
+//
+//     )
+//   }
+// }
+// ReactDOM.render(<App />, document.getElementById('app'));
 
-class NavBar extends React.Component {
+class App extends React.Component {
   render() {
-  return (
-  <React.Fragment>
-  <li><a href="#infoBox1">Batman</a></li>
-  <li><a href="#infoBox2">Superman</a></li>
-  <li><a href="#infoBox3">Spiderman</a></li>
-  <li><a href="#infoBox4">Aquaman</a></li>
-  </React.Fragment>
+    return (
+      <React.Fragment>
+      <BlogPost makeBigDate={true}>
+        <BlogPostData author='Jens S.'/>
+        <BlogPostContent image='./images/Superman.jpg' isSeen={true} threat='this class' />
+      </BlogPost>
+      <BlogPost makeBigDate={false}>
+        <BlogPostData author='Theresa M.'/>
+        <BlogPostContent image= './images/Batman.jpg' isSeen={false} threat='Brexit' />
+      </BlogPost>
+      </React.Fragment>
+
+
     )
   }
 }
-ReactDOM.render(<NavBar />, document.getElementById('navBar'));
-
-class InfoBox extends React.Component {
-  render() {
-    return (
-          <div>
-            <h3>{this.props.title}</h3>
-            <img src={"./images/"+this.props.pic+".jpg"}/>
-            <p>{this.props.description}</p>
-          </div>
-        )
-  }
-}
-
-ReactDOM.render(<InfoBox title='Ich bin...' pic='Batman' description='The Dark Knight'/>, document.getElementById('infoBox1'));
-ReactDOM.render(<InfoBox title='Und ich bin..' pic='Superman' description='The man of Steel'/>,  document.getElementById('infoBox2'));
-ReactDOM.render(<InfoBox title='Und mich nennt man..' pic='marvels-spider-man' description='The human Spider'/>, document.getElementById('infoBox3'));
-ReactDOM.render(<InfoBox title='Ich bin..' pic='alps' description='The Water Guy'/>, document.getElementById('infoBox4'));
+ReactDOM.render(<App />, document.getElementById('app'));
