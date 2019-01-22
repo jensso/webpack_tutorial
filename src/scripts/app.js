@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import {InfoBox} from './infobox.js';
 import {NavBar} from './navbar.js';
 import {BlogPostData,BlogPostContent,BlogPost} from './blog';
+import {CreateContent, GiveInput} from './createContent.js';
 
 // button.addEventListener('click', ev=> {
 //   addElement(list,'LI', 'a task is born');
@@ -82,22 +83,26 @@ import {BlogPostData,BlogPostContent,BlogPost} from './blog';
 // }
 // ReactDOM.render(<App />, document.getElementById('app'));
 
-class App extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-      <BlogPost makeBigDate={true}>
-        <BlogPostData author='Jens S.'/>
-        <BlogPostContent image='./images/Superman.jpg' isSeen={true} threat='this class' />
-      </BlogPost>
-      <BlogPost makeBigDate={false}>
-        <BlogPostData author='Theresa M.'/>
-        <BlogPostContent image= './images/Batman.jpg' isSeen={false} threat='Brexit' />
-      </BlogPost>
-      </React.Fragment>
+// class App extends React.Component {
+//   render() {
+//     return (
+//       <React.Fragment>
+//       <BlogPost makeBigDate={true}>
+//         <BlogPostData author='Jens S.'/>
+//         <BlogPostContent image='./images/Superman.jpg' isSeen={true} threat='this class' />
+//       </BlogPost>
+//       <BlogPost makeBigDate={false}>
+//         <BlogPostData author='Theresa M.'/>
+//         <BlogPostContent image= './images/Batman.jpg' isSeen={false} threat='Brexit' />
+//       </BlogPost>
+//       </React.Fragment>
+//
+//
+//     )
+//   }
+// }
+// ReactDOM.render(<App />, document.getElementById('app'));
+// ReactDOM.render(<InfoBox title='beachhouse' pic='beachhouse' description='A Beach'/>, document.getElementById('app2'));
 
-
-    )
-  }
-}
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<CreateContent />, document.getElementById('app'));
+ReactDOM.render(<GiveInput />, document.getElementById('app2'));
