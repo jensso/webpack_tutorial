@@ -138,21 +138,19 @@ export class TaskPlanner extends React.Component {
     this.state.taskExists = this.state.newTask.includes(this.state.inputVal);
     if (!this.state.taskExists && this.state.inputVal !=='') {this.state.newTask.push(this.state.inputVal)};
     this.setState({inputVal:'',
-
     });
-    console.log(this.state.taskExists);
-    console.log(this.state.newTask);
+    // console.log(this.state.taskExists);
+    // console.log(this.state.newTask);
   }
-
 
   render() {
       return ( <React.Fragment>
-      <form className="form-group d-flex bg-secondary m-2 p-2" onSubmit={this.handleSubmit.bind(this)}>
+      <form className="form-group bg-secondary m-2 p-2" onSubmit={this.handleSubmit.bind(this)}>
         <input style={{width: '65%', border:'2px solid lime'}} type="text" placeholder="write something you want to achieve"
         className="form-control-lg m-1 p-2" onChange={this.handleInput.bind(this)} value={this.state.inputVal}></input>
-        <button type="submit" className="btn btn-success m-2 p-2">create new task</button>
+        <button type="submit" className="btn btn-success m-2 p-2 border-light float-right">create new task</button>
       </form>
-      {this.state.taskExists && <p className="lead mx-2 p-3 bg-warning text-danger">This Task was already planned!</p>}
+      {this.state.taskExists && <p className="lead mx-2 p-3 bg-warning text-danger text-center">This Task was already planned!</p>}
       <TaskInput inputVal={this.state.inputVal} newTask={this.state.newTask} taskExists={this.state.taskExists}/>
 
       </React.Fragment> )
@@ -160,14 +158,42 @@ export class TaskPlanner extends React.Component {
 }
 
 class TaskInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      textDeco: '',
+      btnText: 'set task done',
+    };
+  }
+  handleSetDone(ev) {
+
+    this.state.textDeco === '' ?
+    this.setState({
+      textDeco: ev.target.parentNode.style.textDecoration='line-through',
+      btnText: ev.target.innerText='revive this task',
+    })
+    :
+    this.setState({
+      textDeco: ev.target.parentNode.style.textDecoration='',
+      btnText: ev.target.innerText='set task done',
+    });
+}
+  handleRemove(ev) {
+    this.setState({});
+    // console.log(this.props.newTask);
+    // ev.target.parentNode.parentNode.removeChild(ev.target.parentNode);
+    this.props.newTask.splice(ev.target.parentNode, 1);
+    // console.log(this.props.newTask);
+}
+
   render() {
     return (
     <React.Fragment>
 
-    {!this.props.taskExist && this.props.newTask.map((task,index)=> <p className="lead mx-3 p-3 bg-dark text-light" key={index}>
-    ~ {task}
-      <button onClick={()=> console.log(this.props.newTask)} className="btn btn-danger float-right border-light">remove task</button>
-      <button onClick={()=> console.log(this.props.newTask[index])} className="btn btn-warning float-right border-light">set task done</button>
+    {!this.props.taskExist && this.props.newTask.map((task,index)=> <p className="lead mx-2 p-3 bg-dark text-light" key={index}>
+    {index+1}. {task}
+      <button onClick={this.handleRemove.bind(this)} className="btn btn-danger mx-1 float-right border-light">remove task</button>
+      <button onClick={this.handleSetDone.bind(this)} className="btn btn-warning mx-1 text-light float-right border-light">set task done</button>
     </p>)}
     </React.Fragment> )
     }
