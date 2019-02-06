@@ -9,7 +9,6 @@ export class BlogPostData extends React.Component {
     )
   }
 }
-
 export class BlogPostContent extends React.Component {
   render() {
     return (
@@ -21,7 +20,6 @@ export class BlogPostContent extends React.Component {
     )
   }
 }
-
 export class BlogPost extends React.Component {
   render() {
     const today = new Date();

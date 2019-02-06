@@ -7,6 +7,7 @@ export class CreateContent extends React.Component {
                   counter: 0,
                   };
   }
+
   handleClick(event) {
     this.setState({
                   counter: this.state.counter+1,
@@ -69,7 +70,6 @@ class InputText extends React.Component {
     return <p className="display-4 py-2 mx-2 px-3 bg-dark text-white">{!this.props.inputVal ? 'Hello! Please Type something' : this.props.inputVal}</p>
     }
 }
-
 const AllImages = [
   {name: 'eule_1',category: 'Owls'},
   {name: 'eule_2',category: 'Owls'},
@@ -81,52 +81,62 @@ const AllImages = [
   {name: 'amsterdam',category: 'Views'},
   {name: 'brooklyn',category: 'Views'}
 ];
+const BSclassNames = ['btn-dark', 'btn-info', 'btn-secondary', 'btn-primary'];
+const ButtonData = [
+  {identifier: 'all',  text: 'All'},
+  {identifier: 'Owls',  text: 'show Owls'},
+  {identifier: 'Heroes',  text: 'show Heroes'},
+  {identifier: 'Views',  text: 'show Views'},
+];
 export class PicPicker extends React.Component {
   constructor(props) {
     super(props);
     this.state = {shownPhotos: AllImages};
   }
 
-  showOwls() {
-  this.setState({shownPhotos: AllImages.filter(obj=> obj.category==='Owls')});
+  filterBy(cat) {
+    if (cat==='all') {
+      this.setState({shownPhotos: AllImages});
+    }
+    else {
+      this.setState({shownPhotos: AllImages.filter(obj=> obj.category===cat)});
   }
-  showHeroes() {
-    this.setState({shownPhotos: AllImages.filter(obj=> obj.category==='Heroes')});
-  }
-  showViews() {
-    this.setState({shownPhotos: AllImages.filter(obj=> obj.category==='Views')});
-  }
-  showAll() {
-    this.setState({shownPhotos: AllImages});
+}
+  filterImages(ev) {
+    const targetID = ev.target.getAttribute('cat');
+    this.filterBy(targetID);
   }
   render() {
     return (
       <React.Fragment>
       <div className="btn-group-lg">
-      <button className="btn btn-dark" onClick={this.showAll.bind(this)}>All</button>
-      <button className="btn btn-info" onClick={this.showOwls.bind(this)}>Owls</button>
-      <button className="btn btn-secondary" onClick={this.showHeroes.bind(this)}>Heroes</button>
-      <button className="btn btn-primary" onClick={this.showViews.bind(this)}>Views</button>
+      {ButtonData.map((button, index)=>  <button key={index} cat={button.identifier} className={["btn","btn-lg","border-dark","m-1", BSclassNames[index]].join(' ')} onClick={this.filterImages.bind(this)}>{button.text}</button>)}
       </div>
-
-      <div className="container">
-      {
-        this.state.shownPhotos.map((name, index)=> <img src={`./images/${this.state.shownPhotos[index].name}.jpg`} width="30%" height="200" className="m-1" key={index}/>)
-      }
-      </div>
+      <PicsToShow shownPhotos={this.state.shownPhotos}/>
 
       </React.Fragment>
     )
   }
+}
+const PicsToShow = props=> {
+    return (
+    <div className="container">
+    {props.shownPhotos.map((name, index)=>
+    <img src={`./images/${props.shownPhotos[index].name}.jpg`} width="30%" height="200" className="m-1" key={index}/>)}
+    </div> )
 }
 
 export class TaskPlanner extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: 'id',
       newTask: [],
       inputVal: '',
       taskExists: false,
+      width: 0,
+      warner: '',
+      PisSeen: false,
     };
   }
   handleInput(ev) {
@@ -135,12 +145,20 @@ export class TaskPlanner extends React.Component {
 }
   handleSubmit(ev) {
     ev.preventDefault();
+    this.state.warner = document.getElementById('id');
     this.state.taskExists = this.state.newTask.includes(this.state.inputVal);
     if (!this.state.taskExists && this.state.inputVal !=='') {this.state.newTask.push(this.state.inputVal)};
     this.setState({inputVal:'',
     });
-    // console.log(this.state.taskExists);
-    // console.log(this.state.newTask);
+
+    console.log(this.state.taskExists);
+    console.log(this.state.width);
+
+      // this.state.warner ? this.setState({width:100}) : this.setState({width:0});
+
+    console.warn(this.state.warner);
+    console.log(this.state.taskExists);
+    console.log(this.state.width);
   }
 
   render() {
@@ -150,13 +168,12 @@ export class TaskPlanner extends React.Component {
         className="form-control-lg m-1 p-2" onChange={this.handleInput.bind(this)} value={this.state.inputVal}></input>
         <button type="submit" className="btn btn-success m-2 p-2 border-light float-right">create new task</button>
       </form>
-      {this.state.taskExists && <p className="lead mx-2 p-3 bg-warning text-danger text-center">This Task was already planned!</p>}
-      <TaskInput inputVal={this.state.inputVal} newTask={this.state.newTask} taskExists={this.state.taskExists}/>
+      {this.state.taskExists && <p id="id" className="lead mx-2 p-3 bg-warning text-danger text-center">This Task was already planned!</p>}
+      <TaskInput inputVal={this.state.inputVal} newTask={this.state.newTask} taskExists={this.state.taskExists} id={this.state.id}/>
 
       </React.Fragment> )
   }
 }
-
 class TaskInput extends React.Component {
   constructor(props) {
     super(props);
@@ -190,7 +207,7 @@ class TaskInput extends React.Component {
     return (
     <React.Fragment>
 
-    {!this.props.taskExist && this.props.newTask.map((task,index)=> <p className="lead mx-2 p-3 bg-dark text-light" key={index}>
+    {!this.props.taskExists && this.props.newTask.map((task,index)=> <p className="lead mx-2 p-3 bg-dark text-light" key={index}>
     {index+1}. {task}
       <button onClick={this.handleRemove.bind(this)} className="btn btn-danger mx-1 float-right border-light">remove task</button>
       <button onClick={this.handleSetDone.bind(this)} className="btn btn-warning mx-1 text-light float-right border-light">set task done</button>

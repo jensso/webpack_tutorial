@@ -1,8 +1,251 @@
-main {
-  margin: 2vw auto; }
-  main div {
+#jso_navBar {
+  box-shadow: 1vw 2vw 3vw grey;
+  border-radius: 2vw 0 2vw 0;
+  padding: 1vw 0.5vw; }
+  #jso_navBar li {
+    border-radius: 1vw 0 1vw 0; }
+    #jso_navBar li:nth-of-type(1) {
+      color: silver; }
+    #jso_navBar li:hover {
+      background: olive; }
+
+#jso_carousel {
+  box-shadow: 1vw 2vw 3vw grey;
+  border-radius: 2vw 0 2vw 0;
+  padding: 2vw; }
+  #jso_carousel #myCarousel span {
+    margin: 2vw auto;
+    padding: 1.5vw;
     color: olive;
-    border-radius: 5vw 0;
-    box-shadow: 1vw 2vw 4vw 0.6vw grey;
-    text-shadow: 0.5vw 0.3vw 1vw silver; }
+    background: silver;
+    opacity: 0.4;
+    box-shadow: 0.5vw 1vw 3vw silver;
+    border: 0.2vw solid olive;
+    border-radius: 0 4vw 0 4vw;
+    transition: all 1s linear; }
+    #jso_carousel #myCarousel span:hover {
+      color: white;
+      background: grey;
+      opacity: 0.8;
+      box-shadow: 1vw 2vw 3vw grey;
+      border: 0.2vw solid white;
+      cursor: pointer; }
+    #jso_carousel #myCarousel span:nth-of-type(1) {
+      transform: scaleX(-1); }
+  #jso_carousel #myCarousel img {
+    box-shadow: -1vw -2vw 3vw grey;
+    box-shadow: 1vw 2vw 3vw grey;
+    border: 0.1vw solid olive;
+    border-radius: 2vw 0 2vw 0; }
+
+#jso_weather {
+  border-radius: 2vw 0;
+  box-shadow: 1vw 2vw 3vw grey;
+  padding: 2vw; }
+  #jso_weather img {
+    border-radius: 2vw 0 2vw 0;
+    box-shadow: 1vw 2vw 3vw grey; }
+  #jso_weather form {
+    border-radius: 0 0 2vw 0;
+    box-shadow: 1vw 2vw 3vw grey; }
+    #jso_weather form input {
+      width: 75%;
+      margin: 1vw;
+      padding: 2vw;
+      font-size: 2vw;
+      border-radius: 2vw 0 2vw 0;
+      border: 0.1vw solid olive;
+      box-shadow: 1.5vw 1.5vw 1.5vw grey; }
+      #jso_weather form input::placeholder {
+        color: olive;
+        opacity: 0.7;
+        font-size: 2vw; }
+      #jso_weather form input:focus {
+        outline: none; }
+    #jso_weather form button {
+      margin: 1vw;
+      padding: 2vw;
+      color: olive;
+      background: white;
+      font-size: 2.5vw;
+      border-radius: 2vw 0 2vw 0;
+      border: 0.2vw solid olive;
+      box-shadow: 0.5vw 1vw 1.5vw silver;
+      transition: all 1s ease-in; }
+      #jso_weather form button:hover {
+        cursor: pointer;
+        color: white;
+        background: olive;
+        border-radius: 0 2vw 0 2vw;
+        border: 0.2vw solid white;
+        box-shadow: 1.5vw 1.5vw 1.5vw grey; }
+      #jso_weather form button:focus {
+        outline: none; }
+
+#jso_taskPlanner {
+  box-shadow: 1vw 2vw 3vw grey;
+  border-radius: 2vw 0; }
+  #jso_taskPlanner form {
+    border-radius: 2vw 0;
+    box-shadow: 1vw 2vw 3vw grey;
+    padding: 1vw; }
+    #jso_taskPlanner form input {
+      width: 65%;
+      height: 6vw;
+      margin: 1vw;
+      padding: 2vw;
+      font-size: 2vw;
+      border: 0.2vw solid olive;
+      border-radius: 2vw 0; }
+      #jso_taskPlanner form input::placeholder {
+        color: olive;
+        opacity: 0.7;
+        font-size: 2vw; }
+      #jso_taskPlanner form input:focus {
+        outline: none; }
+    #jso_taskPlanner form button {
+      width: 25%;
+      height: 6vw;
+      margin: 1vw;
+      padding: 1vw;
+      font-size: 2vw;
+      color: olive;
+      background: white;
+      border-radius: 0 2vw;
+      border: 0.2vw solid olive;
+      transition: all 1s ease-out; }
+      #jso_taskPlanner form button:hover {
+        cursor: pointer;
+        color: white;
+        background: olive;
+        border-radius: 2vw;
+        border: 0.2vw solid white;
+        box-shadow: 0.5vw 1vw 2vw yellow; }
+      #jso_taskPlanner form button:focus {
+        outline: none; }
+  #jso_taskPlanner p {
+    border-radius: 2vw;
+    box-shadow: 0.5vw 1vw 2vw grey; }
+
+#jso_checkZodiac {
+  box-shadow: 1vw 2vw 3vw grey;
+  border-radius: 2vw 0 2vw 0;
+  padding: 2vw; }
+  #jso_checkZodiac .myWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2vw; }
+    #jso_checkZodiac .myWrapper img {
+      width: 100%;
+      height: 100%;
+      box-shadow: 1vw 2vw 3vw grey;
+      border-radius: 2vw 0 2vw 0; }
+    #jso_checkZodiac .myWrapper p {
+      text-align: center;
+      box-shadow: 0.5vw 1vw 3vw grey;
+      border-radius: 2vw 0 2vw 0; }
+    #jso_checkZodiac .myWrapper input {
+      margin: 1vw auto;
+      padding: 1vw;
+      box-shadow: 1vw 2vw 3vw grey;
+      border-radius: 2vw 0 2vw 0; }
+
+#jso_luckyNumbers {
+  border-radius: 2vw 0;
+  box-shadow: 1vw 2vw 3vw grey;
+  display: flex;
+  justify-content: space-around; }
+  #jso_luckyNumbers #quote {
+    width: 45%;
+    border-radius: 2vw 0;
+    box-shadow: 1vw 2vw 3vw grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    #jso_luckyNumbers #quote p {
+      border-radius: 2vw 0;
+      box-shadow: 1vw 2vw 3vw grey;
+      padding: 2vw;
+      margin: 1vw; }
+      #jso_luckyNumbers #quote p:nth-of-type(2) {
+        transform: rotate(15deg);
+        color: gold !important;
+        transition: all 1s ease-in;
+        opacity: 0.8; }
+  #jso_luckyNumbers #lottery {
+    margin: 2vw 1vw;
+    width: 45%;
+    border-radius: 2vw 0;
+    box-shadow: 1vw 2vw 3vw grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; }
+    #jso_luckyNumbers #lottery #winner {
+      width: 80%;
+      text-align: center;
+      border: 0.1vw dotted gold;
+      border-radius: 0 2vw;
+      box-shadow: 0.5vw 0.5vw 0.5vw silver;
+      margin: 1vw auto;
+      padding: 1vw;
+      color: gold;
+      text-shadow: 0.2vw 0.4vw 0.5vw gold;
+      text-shadow: 0.1vw 0.1vw 0.1vw white;
+      background: black; }
+    #jso_luckyNumbers #lottery #looser {
+      width: 80%;
+      text-align: center;
+      border: 0.2vw solid grey;
+      border-radius: 0 2vw;
+      box-shadow: 0.5vw 0.5vw 0.5vw grey;
+      margin: 1vw auto;
+      padding: 1vw;
+      color: silver;
+      text-shadow: 0.2vw 0.4vw 0.5vw grey;
+      text-shadow: 0.1vw 0.1vw 0.1vw white;
+      background: olive; }
+    #jso_luckyNumbers #lottery p {
+      width: 80%;
+      text-align: center;
+      border: 0.2vw solid olive;
+      border-radius: 1vw;
+      box-shadow: 0.5vw 0.5vw 0.5vw grey;
+      margin: 0.5vw auto;
+      padding: 1vw;
+      color: olive;
+      text-shadow: 0.2vw 0.4vw 0.5vw grey;
+      text-shadow: 0.1vw 0.1vw 0.1vw black;
+      background: silver; }
+      #jso_luckyNumbers #lottery p button {
+        width: 5vw;
+        height: 5vw;
+        margin: 1vw;
+        padding: 1vw;
+        background: olive;
+        border: 0.2vw solid brown;
+        box-shadow: 0.1vw 0.2vw olive;
+        border-radius: 20vw; }
+        #jso_luckyNumbers #lottery p button:hover {
+          cursor: pointer;
+          background: brown;
+          border: 0.2vw solid olive;
+          box-shadow: none; }
+        #jso_luckyNumbers #lottery p button:focus {
+          outline: none; }
+      #jso_luckyNumbers #lottery p span {
+        font-family: monospace;
+        background: white;
+        opacity: 0.8;
+        color: red;
+        margin: 0.4vw;
+        padding: 0.4vw;
+        border-style: inset;
+        border: 0.1vw solid red; }
+
+#jso_section3 {
+  box-shadow: 1vw 2vw 3vw grey;
+  border-radius: 2vw 0;
+  padding: 2vw;
+  opacity: 0.6; }
 
