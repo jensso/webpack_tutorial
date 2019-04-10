@@ -1,4 +1,6 @@
 import React from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { BrowserRouter, NavLink, Route } from 'react-router-dom';
 
 export class JSo_my_profile_page  extends React.Component {
   constructor(props) {
@@ -12,7 +14,7 @@ export class JSo_my_profile_page  extends React.Component {
       <JSo_navBar />
       <JSo_carousel />
       <JSo_weather />
-      <JSo_taskPlanner inputVal={this.state.inputVal} newTask={this.state.newTask} taskExists={this.state.taskExists} id={this.state.id}/>
+      <JSo_taskPlanner />
       <Jso_checkZodiac />
       <JSo_luckyNumbers />
 
@@ -56,6 +58,8 @@ export class JSo_carousel extends React.Component {
     this.state = { counter: 0,
                     showViews: beautifulViews,
                   }; //this.state ends
+    this.handleLeft = this.handleLeft.bind(this);
+    this.handleRight = this.handleRight.bind(this);
   } // constructor ends
   handleLeft(ev) {
     this.setState({counter: this.state.counter-1});
@@ -78,19 +82,14 @@ export class JSo_carousel extends React.Component {
       </div>
       <div id="jso_carousel"className="jumbotron m-1">
         <section id="myCarousel" className="d-flex justify-content-center">
-          <span onClick={this.handleLeft.bind(this)}>-</span>
-          {/* <div className="mySlider "></div>
-          {this.state.showViews.map((name, index)=>*/}
-            {<img src={`./images/${this.state.showViews[this.state.counter]}.jpg`} width="75%" height="250rem" alt="nothing to see here"/>}
-          <span onClick={this.handleRight.bind(this)}>+</span>
+          <span onClick={this.handleLeft}>-</span>
+            <img src={`./images/${this.state.showViews[this.state.counter]}.jpg`} width="75%" height="250rem" alt="nothing to see here"/>
+          <span onClick={this.handleRight}>+</span>
         </section>
       </div>
       </React.Fragment>
     )
-
   } // render ends
-
-
 }
 export class JSo_weather extends React.Component {
   constructor(props) {
@@ -214,6 +213,7 @@ export class JSo_taskPlanner extends React.Component {
                       inputEmpty: false,});
     }
   }
+
   render() {
       return (
       <React.Fragment>
@@ -225,9 +225,10 @@ export class JSo_taskPlanner extends React.Component {
           className="form-control-lg" onChange={this.handleInput.bind(this)} value={this.state.inputVal}></input>
           <button type="submit">create a new task</button>
         </form>
-        {this.state.inputEmpty && <p id="id" className="lead m-1 p-2 bg-warning text-danger text-center">Please type something!</p>}
-        {this.state.taskExists && <p id="id" className="lead m-1 p-2 bg-warning text-danger text-center">This Task was already planned!</p>}
+        {this.state.inputEmpty && <p className="lead m-1 p-2 bg-warning text-danger text-center">Please type something!</p>}
+        {this.state.taskExists && <p className="lead m-1 p-2 bg-warning text-danger text-center">This Task was already planned!</p>}
         <JSo_taskInput inputVal={this.state.inputVal} newTask={this.state.newTask} taskExists={this.state.taskExists}/>
+
       </div>
       </React.Fragment>
     )
@@ -263,13 +264,13 @@ export class JSo_taskInput extends React.Component {
 }
   render() {
     return (
-    <React.Fragment>
-    {!this.props.taskExists && this.props.newTask.map((task,index)=> <p className="lead mx-2 p-3 bg-dark text-light" key={index}>
+    <TransitionGroup>
+    {!this.props.taskExists && this.props.newTask.map((task,index)=> <CSSTransition timeout={1800} classNames="fade" key={index}><p className="lead mx-2 p-3 bg-dark text-light">
     {index+1}. {task}
       <button onClick={this.handleRemove.bind(this)} className="btn btn-danger mx-1 float-right border-light">remove task</button>
       <button onClick={this.handleSetDone.bind(this)} className="btn btn-warning mx-1 text-light float-right border-light">set task done</button>
-    </p>)}
-    </React.Fragment>
+    </p></CSSTransition>)}
+    </TransitionGroup>
     )
   }
 }
@@ -414,19 +415,18 @@ export class JSo_luckyNumbers extends React.Component {
 
         <div id="lottery">
           {this.state.clicked && <p>the lucky number is <span>{this.state.luckyNum}</span></p>}
-          <p>Run the lottery</p>
+          {!this.state.clicked && <p>Run the lottery</p>}
           <p><button onClick={this.handleClick.bind(this)}></button></p>
 
             {this.state.clicked && <p>
-              Win with every 7<br />
-              Win with 3 equal digits<br />
-              Win with your draw:
-              {/*randomNo.setInterval(span=> {return this.state.span.style.opacity = '1'},1000)*/}
+              - Win with every 7<br />
+              - Win with 3 equal digits<br />
+              - Win with your draw:<br />
               <span id="random1">{this.state.random1/100}</span>
               <span id="random2">{this.state.random2/10}</span>
               <span id="random3">{this.state.random3}</span>
             </p>}
-          {this.state.winner && this.state.clicked && <p id="winner">MATCHED: YOU WIN!</p>}
+          {this.state.winner && this.state.clicked && <p id="winner">Hooray, a match<br/>YOU WIN!</p>}
           {!this.state.winner && this.state.clicked && <p id="looser">Sorry, no match<br/>YOU LOOSE!</p>}
         </div>
       </div>
@@ -436,25 +436,6 @@ export class JSo_luckyNumbers extends React.Component {
 }
 
 export class JSo_section3 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    }; //this.state ends
-  } // constructor ends
-  render() {
-    return(
-      <React.Fragment>
-      <div id="jso_section3" className="jumbotron m-1 d-flex">
-      <img src="./images/forest.jpg" width="50%" height="150 rem" alt="nothing to see here" />
-      <div><h2 className="small mx-2 p-2 text-center">Some Text to provide</h2></div>
-      </div>
-      </React.Fragment>
-    )
-
-  } // render ends
-}
-class JSo_section4 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

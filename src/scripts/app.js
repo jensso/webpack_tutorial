@@ -2,10 +2,12 @@ import '../styles/main.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+
 import { JSo_my_profile_page, JSo_navBar, JSo_carousel, JSo_weather, JSo_section3 } from './jso_my_profile_page';
 import { JSo_taskPlanner, JSo_taskInput } from './jso_my_profile_page';
 import { Jso_checkZodiac, JSo_luckyNumbers } from './jso_my_profile_page';
-
+import { Fishes, ShowFishes } from './jso_my_profile_page';
+import { BlogPostRoute, CreatePost } from './blog';
 // import {InfoBox} from './infobox.js';
 // import {BlogPostData,BlogPostContent,BlogPost} from './blog';
 // import {CreateContent, GiveInput, PicPicker, TaskPlanner} from './createContent.js';
@@ -106,4 +108,7 @@ import { Jso_checkZodiac, JSo_luckyNumbers } from './jso_my_profile_page';
 // ReactDOM.render(<GiveInput />, document.getElementById('app3'));
 // ReactDOM.render(<TaskPlanner />, document.getElementById('app4'));
 
-ReactDOM.render(<JSo_my_profile_page />, document.getElementById("root"));
+// ReactDOM.render(<JSo_my_profile_page />, document.getElementById("root"));
+// ReactDOM.render(<Fishes />, document.getElementById('root2'));
+
+ReactDOM.render(<BlogPostRoute />, document.getElementById('root2'));

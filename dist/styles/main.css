@@ -46,7 +46,7 @@
     border-radius: 2vw 0 2vw 0;
     box-shadow: 1vw 2vw 3vw grey; }
   #jso_weather form {
-    border-radius: 0 0 2vw 0;
+    border-radius: 2vw 0;
     box-shadow: 1vw 2vw 3vw grey; }
     #jso_weather form input {
       width: 75%;
@@ -71,7 +71,7 @@
       border-radius: 2vw 0 2vw 0;
       border: 0.2vw solid olive;
       box-shadow: 0.5vw 1vw 1.5vw silver;
-      transition: all 1s ease-in; }
+      transition: all 0.5s ease-in; }
       #jso_weather form button:hover {
         cursor: pointer;
         color: white;
@@ -93,7 +93,7 @@
       width: 65%;
       height: 6vw;
       margin: 1vw;
-      padding: 2vw;
+      padding: 1vw;
       font-size: 2vw;
       border: 0.2vw solid olive;
       border-radius: 2vw 0; }
@@ -104,6 +104,7 @@
       #jso_taskPlanner form input:focus {
         outline: none; }
     #jso_taskPlanner form button {
+      float: right;
       width: 25%;
       height: 6vw;
       margin: 1vw;
@@ -126,6 +127,18 @@
   #jso_taskPlanner p {
     border-radius: 2vw;
     box-shadow: 0.5vw 1vw 2vw grey; }
+  #jso_taskPlanner .fade-enter {
+    opacity: 0.1;
+    transition: opacity 1.8s linear; }
+  #jso_taskPlanner .fade-enter-active {
+    opacity: 0.9;
+    transition: opacity 2s linear; }
+  #jso_taskPlanner .fade-exit {
+    opacity: 0.9;
+    transition: opacity 1.8s linear; }
+  #jso_taskPlanner .fade-exit-active {
+    opacity: 0.1;
+    transition: opacity 2s linear; }
 
 #jso_checkZodiac {
   box-shadow: 1vw 2vw 3vw grey;
@@ -171,7 +184,6 @@
       #jso_luckyNumbers #quote p:nth-of-type(2) {
         transform: rotate(15deg);
         color: gold !important;
-        transition: all 1s ease-in;
         opacity: 0.8; }
   #jso_luckyNumbers #lottery {
     margin: 2vw 1vw;
@@ -184,25 +196,25 @@
     #jso_luckyNumbers #lottery #winner {
       width: 80%;
       text-align: center;
-      border: 0.1vw dotted gold;
+      border: 0.2vw dashed gold;
       border-radius: 0 2vw;
       box-shadow: 0.5vw 0.5vw 0.5vw silver;
       margin: 1vw auto;
       padding: 1vw;
       color: gold;
-      text-shadow: 0.2vw 0.4vw 0.5vw gold;
+      text-shadow: 0.2vw 0.4vw 0.6vw gold;
       text-shadow: 0.1vw 0.1vw 0.1vw white;
       background: black; }
     #jso_luckyNumbers #lottery #looser {
       width: 80%;
       text-align: center;
-      border: 0.2vw solid grey;
+      border: 0.2vw solid brown;
       border-radius: 0 2vw;
       box-shadow: 0.5vw 0.5vw 0.5vw grey;
       margin: 1vw auto;
       padding: 1vw;
       color: silver;
-      text-shadow: 0.2vw 0.4vw 0.5vw grey;
+      text-shadow: 0.2vw 0.4vw 0.6vw grey;
       text-shadow: 0.1vw 0.1vw 0.1vw white;
       background: olive; }
     #jso_luckyNumbers #lottery p {
@@ -224,21 +236,21 @@
         padding: 1vw;
         background: olive;
         border: 0.2vw solid brown;
-        box-shadow: 0.1vw 0.2vw olive;
+        box-shadow: 0 0 1vw grey;
         border-radius: 20vw; }
         #jso_luckyNumbers #lottery p button:hover {
           cursor: pointer;
           background: brown;
-          border: 0.2vw solid olive;
-          box-shadow: none; }
+          border: 0.2vw solid olive; }
         #jso_luckyNumbers #lottery p button:focus {
           outline: none; }
+        #jso_luckyNumbers #lottery p button:active {
+          border: 0.1vw solid gold; }
       #jso_luckyNumbers #lottery p span {
         font-family: monospace;
         background: white;
-        opacity: 0.8;
         color: red;
-        margin: 0.4vw;
+        margin: 0.2vw;
         padding: 0.4vw;
         border-style: inset;
         border: 0.1vw solid red; }
